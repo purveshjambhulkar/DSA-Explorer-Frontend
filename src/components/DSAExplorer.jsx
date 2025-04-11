@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 
-const API_URL = "https://dsa-question-explorer.vercel.app"; 
+const API_URL = "https://dsa-explorer-backend.vercel.app";
+
 
 const correctPassword = "dsadsa";
 
