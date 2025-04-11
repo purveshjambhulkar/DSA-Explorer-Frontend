@@ -1,0 +1,472 @@
+/* Reset & Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Full-Screen Layout */
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #f4f4f4;
+  overflow: hidden;
+}
+
+/* Flexbox Container */
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Header (Smaller Navbar) */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #222;
+  color: white;
+  padding: 8px 20px;  /* Reduced padding */
+  font-size: 18px;  /* Slightly smaller text */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  height: 50px;  /* Smaller height */
+}
+
+/* Menu Button (for mobile) */
+.menu-btn {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Sidebar (Organized Topics) */
+.sidebar {
+  width: 280px;
+  background: #222;
+  color: white;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+  height: calc(100vh - 50px);
+  position: fixed;
+  left: 0;
+  top: 50px;
+  border-right: 2px solid #444;
+}
+
+/* Hide Scrollbar */
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  border-bottom: 2px solid teal;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+/* Topics must be stacked vertically */
+.topic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Spacing between topics */
+}
+
+/* Each topic item */
+.topic-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: #333;
+  border-radius: 5px;
+}
+
+/* Checkbox styling */
+.topic-item input[type="checkbox"] {
+  cursor: pointer;
+  transform: scale(1.2); /* Make checkbox slightly bigger */
+}
+
+/* Topic label */
+.topic-item label {
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Sidebar Buttons */
+.sidebar button {
+  padding: 10px;
+  font-size: 16px;
+  background: teal;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar button:hover {
+  background: #00796b;
+}
+
+/* Main Content */
+.question-box {
+  flex-grow: 1;
+  background: white;
+  padding: 20px;
+  overflow-y: auto;
+  margin-left: 280px; /* Adjusted for sidebar width */
+  margin-top: 60px; /* Adjusted for smaller navbar */
+}
+
+/* Hide Scrollbar for Main Content */
+.question-box::-webkit-scrollbar {
+  display: none;
+}
+
+.question-box h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.question-box p {
+  margin-bottom: 14px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Markdown Content Styling */
+.markdown {
+  white-space: pre-wrap;
+  background: #f9f9f9;
+  padding: 26px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+/* Code Block Styling */
+pre {
+  background: #282c34;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre-wrap;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.nav-buttons button {
+  padding: 10px 18px;
+  font-size: 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-buttons button:hover {
+  background: #0056b3;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+  }
+
+  /* Menu Button Visible */
+  .menu-btn {
+      display: block;
+  }
+
+  /* Sidebar Hidden by Default */
+  .sidebar {
+      position: fixed;
+      left: -280px;
+      top: 50px;
+      height: calc(100vh - 50px);
+      width: 280px;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+      transition: left 0.3s ease-in-out;
+  }
+
+  /* Show Sidebar When Active */
+  .sidebar.active {
+      left: 0;
+  }
+
+  .question-box {
+      margin-left: 0;
+      margin-top: 70px;
+      padding: 0px;
+  }
+
+  /* Markdown Content */
+  .markdown {
+      font-size: 16px;
+
+      padding: 0px;
+  }
+
+  /* Code Block - Increase Width */
+  pre {
+      font-size: 18px;
+      padding: 12px;
+      width: 95%;
+      max-width: 100%;
+      white-space: pre-wrap;
+  }
+}
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .sidebar {
+  background: #333;
+  border-right: 2px solid #444;
+}
+
+.dark-mode .topic-item {
+  background: #444;
+}
+
+.dark-mode .question-box {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+.dark-mode .question-box h2 {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+.dark-mode .question-box p {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark-mode .markdown {
+  background: #2a2a2a;
+  border: 1px solid #555;
+  color: #ffffff !important;  /* Ensure text is forced to white */
+}
+
+/* Force Markdown Elements to White */
+.dark-mode .markdown h1,
+.dark-mode .markdown h2,
+.dark-mode .markdown h3,
+.dark-mode .markdown h4,
+.dark-mode .markdown h5,
+.dark-mode .markdown h6,
+.dark-mode .markdown p,
+.dark-mode .markdown span,
+.dark-mode .markdown li,
+.dark-mode .markdown strong,
+.dark-mode .markdown em,
+.dark-mode .markdown a {
+  color: #ffffff !important;
+}
+
+/* Code Blocks and Inline Code */
+.dark-mode .markdown pre,
+.dark-mode .markdown code {
+  background: #1e1e1e;
+  color: #ffffff !important;
+}
+
+/* Button Styling */
+.dark-mode button {
+  background: #00796b;
+}
+
+.dark-mode button:hover {
+  background: #005a4f;
+}
+
+/* Dark Mode Toggle Button */
+#dark-mode-toggle {
+  margin-top: 10px;
+  background: #444;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+
+#dark-mode-toggle:hover {
+  background: #555;
+}
+
+/* Revision Section */
+.container{
+  background: #121212;
+}
+.revision-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #222831; /* Dark color */
+  color: white;
+  border-radius: 5px;
+}
+
+.exit-revision {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.revision-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  padding-top: 66px;
+  background: #121212; /* Dark background */
+  color: #f0f0f0; /* Light text for visibility */
+}
+
+.revision-card {
+  display: flex;
+  align-items: flex-start;
+  background: #1e1e1e; /* Darker background */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.revision-checkbox {
+  margin-right: 15px;
+}
+
+.revision-checkbox input {
+  width: 20px;
+  height: 20px;
+}
+
+.revision-content {
+  flex: 1;
+}
+
+.revision-content h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #ffffff; /* White text */
+}
+
+.revision-content p {
+  font-size: 16px;
+  color: #d0d0d0; /* Light gray text */
+}
+
+.markdown {
+  background: #2a2a2a; /* Darker markdown section */
+  padding: 26px;
+  border-radius: 5px;
+  border-left: 4px solid #007bff;
+  color: #e0e0e0; /* Light text for readability */
+}
+
+/* Sidebar (Default for Desktop) */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #222;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Sidebar for Mobile - Initially Hidden */
+@media (max-width: 768px) {
+  .sidebar {
+      transform: translateX(-100%);
+      width: 75%;
+      max-width: 300px;
+      position: fixed;
+      background: #333;
+      z-index: 1000;
+  }
+
+  .sidebar.open {
+      transform: translateX(0);
+  }
+}
+
+/* Hamburger Menu Button (Visible Only in Mobile) */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Show Hamburger Menu Only in Mobile */
+@media (max-width: 768px) {
+  .hamburger {
+      display: block;
+      position: absolute;
+      right: 10px;
+      font-size: 30px;
+  }
+}
+
+/* Close Button (Only in Mobile) */
+.close-btn {
+  display: none;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Show Close Button in Mobile */
+@media (max-width: 768px) {
+  .close-btn {
+      display: block;
+  }
+}
