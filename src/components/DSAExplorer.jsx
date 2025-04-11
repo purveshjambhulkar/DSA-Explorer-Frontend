@@ -234,25 +234,32 @@ const DSAExplorer = () => {
                 </header>
 
                 <main className="revision-container">
-                    {revisionQuestions.map((question, index) => (
-                        <div key={index} className="revision-card">
-                            <div className="revision-checkbox">
-                                <input
-                                    type="checkbox"
-                                    checked={checkedQuestions.has(index)}
-                                    onChange={() => toggleCheckbox(index)}
-                                />
-                            </div>
-                            <div className="revision-content">
-                                <h2>{question.title}</h2>
-                                <p>{question.description}</p>
-                                <div
-                                    className="markdown"
-                                    dangerouslySetInnerHTML={{ __html: marked.parse(question.markdown || "") }}
-                                ></div>
-                            </div>
-                        </div>
-                    ))}
+                {revisionQuestions.map((question, index) => (
+    <div key={index} className="revision-card">
+        <div className="revision-checkbox">
+            <input
+                type="checkbox"
+                checked={checkedQuestions.has(index)}
+                onChange={() => toggleCheckbox(index)}
+            />
+        </div>
+        <div className="revision-content">
+            <h2>{question.title}</h2>
+            <p>{question.description}</p>
+
+            {/* Dropdown Button for Markdown */}
+            <details className="markdown-dropdown">
+                <summary className="toggle-markdown-btn">📜 Show Markdown</summary>
+                <div
+                    className="markdown-content"
+                    dangerouslySetInnerHTML={{ __html: marked.parse(question.markdown || "") }}
+                ></div>
+            </details>
+        </div>
+    </div>
+))}
+
+
                 </main>
             </div>
         );

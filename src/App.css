@@ -361,6 +361,7 @@ pre {
   padding-top: 66px;
   background: #121212; /* Dark background */
   color: #f0f0f0; /* Light text for visibility */
+  overflow: auto;
 }
 
 .revision-card {
